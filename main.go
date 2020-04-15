@@ -1,10 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/png"
 	"os"
-
+	"time"
 	"github.com/kbinani/screenshot"
 )
 
@@ -19,11 +20,17 @@ func save(img *image.RGBA, filePath string) {
 }
 
 func main() {
-	// Capture each displays.
 	bound := screenshot.GetDisplayBounds(0)
-	img, err := screenshot.Capture(bound.Min.X, bound.Min.Y, bound.Dx(), bound.Dy())
-	if err != nil {
-		panic(err)
+	count := 1
+	for count < 10 {
+		time.Sleep(1 * time.Second)
+		count ++
+		img, err := screenshot.Capture(bound.Min.X, bound.Min.Y, bound.Dx(), bound.Dy())
+		if err != nil {
+			panic(err)
+		}
+		filepath := fmt.Sprintf("all%v.png", count)
+		save(img, filepath)
 	}
-	save(img, "all.png")
+	
 }
