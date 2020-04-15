@@ -32,5 +32,4 @@ func main() {
 		filepath := fmt.Sprintf("all%v.png", count)
 		save(img, filepath)
 	}
-	
 }
