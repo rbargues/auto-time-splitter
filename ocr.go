@@ -9,7 +9,7 @@ import (
 func main() {
 	client := gosseract.NewClient()
 	defer client.Close()
-	client.SetImage("./level-text.png")
+	client.SetImage("./level-select.png")
 	text, _ := client.Text()
 	output_text := fmt.Sprintln(text)
 	fmt.Printf("%v",output_text)
