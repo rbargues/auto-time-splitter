@@ -20,12 +20,13 @@ func save(img *image.RGBA, filePath string) {
 }
 
 func main() {
-	bound := screenshot.GetDisplayBounds(0)
-	count := 1
-	for count < 10 {
+	// bound := screenshot.GetDisplayBounds(0)
+	count := 0
+	for count < 3 {
 		time.Sleep(1 * time.Second)
 		count ++
-		img, err := screenshot.Capture(bound.Min.X, bound.Min.Y, bound.Dx(), bound.Dy())
+		// img, err := screenshot.Capture(bound.Min.X, bound.Min.Y, bound.Dx(), bound.Dy())
+		img, err := screenshot.Capture(72, 59, 630, 470)
 		if err != nil {
 			panic(err)
 		}
