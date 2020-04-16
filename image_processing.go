@@ -50,8 +50,10 @@ func main() {
 	}
 	if imageCount.R[255] > 1000 && imageCount.R[255] > 1000 && imageCount.R[255] > 1000 {
 		fmt.Println("probably load screen")
+		fmt.Println(imageCount)
 	} else {
 		fmt.Println("probably other")
+		fmt.Println(imageCount)
 	}
 	// fmt.Println(imageCount.R[255])
 }

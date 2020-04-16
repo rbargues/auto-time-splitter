@@ -3,9 +3,10 @@ package main
 import (
 	"image"
 	"image/png"
-	// "image/color"
+	"image/color"
 	"image/draw"
 	"os"
+	"fmt"
 )
 /*
 for world name on 630, 470 img
@@ -49,11 +50,30 @@ func main() {
 	//630, 470
 	defer cropCopy.Close()
 	cropInfo, _ := png.Decode(cropCopy)
-	imgWidth := 100
-	imgHeight := 40
+	imgWidth := 300
+	imgHeight := 50
 
 	m := image.NewRGBA(image.Rect(0, 0, imgWidth, imgHeight))
-	draw.Draw(m, image.Rect(0, 0, imgWidth, imgHeight), cropInfo, image.Point{120,110}, draw.Src)
+	draw.Draw(m, image.Rect(0, 0, imgWidth, imgHeight), cropInfo, image.Point{140,150}, draw.Src)
+	imgColor := color.RGBA{0,0,0,255}
+	bounds := m.Bounds()
+	fmt.Println(bounds)
+	for x := bounds.Min.X; x < bounds.Max.X; x++ {
+		for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+			rgba := m.At(x,y).(color.RGBA)
+			if rgba.R == 63 && rgba.G == 62 && rgba.B == 66 {
+				fmt.Println(rgba.R, rgba.G, rgba.B)
+				m.Set(x,y,imgColor)
+			} else if (rgba.R != 237 && rgba.G != 237 && rgba.B != 237) || (rgba.R != 60 && rgba.G != 60 && rgba.B != 64) {
+				m.Set(x,y,color.RGBA{237,237,237,255})
+			} else {
+				fmt.Println(rgba.R, rgba.G, rgba.B)
+			}
+			
+		}
+	}
+
+
 	newImg, _ := os.Create("copied.png")
 	defer newImg.Close()
 
