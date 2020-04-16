@@ -7,7 +7,17 @@ import (
 	"image/draw"
 	"os"
 )
+/*
+for world name on 630, 470 img
+imgWidth 230
+imgHeight 50
+point 200,380
 
+for star count 630, 470 img
+imgWidth 30
+imgHeight 50
+point 390,20
+*/
 func main() {
 	
 	// img := image.NewRGBA(image.Rectangle{image.Point{0,0}, image.Point{imgWidth, imgHeight}})
@@ -25,15 +35,15 @@ func main() {
 	// defer canvas.Close()
 	// canvasInfo, _ := png.Decode(canvas)
 
-	cropCopy, _ := os.Open("./bobomb.png")
+	cropCopy, _ := os.Open("./normalplay.png")
 	//630, 470
 	defer cropCopy.Close()
 	cropInfo, _ := png.Decode(cropCopy)
-	imgWidth := 230
+	imgWidth := 30
 	imgHeight := 50
 
 	m := image.NewRGBA(image.Rect(0, 0, imgWidth, imgHeight))
-	draw.Draw(m, image.Rect(0, 0, imgWidth, imgHeight), cropInfo, image.Point{200,380}, draw.Src)
+	draw.Draw(m, image.Rect(0, 0, imgWidth, imgHeight), cropInfo, image.Point{390,20}, draw.Src)
 	newImg, _ := os.Create("copied.png")
 	defer newImg.Close()
 
