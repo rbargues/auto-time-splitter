@@ -17,6 +17,16 @@ for star count 630, 470 img
 imgWidth 30
 imgHeight 50
 point 390,20
+
+for star name 630, 470 img
+imgWidth 300
+imgHeight 50
+point 140, 150
+
+for couse number 630, 470 img
+imgWidth 100
+imgHeight 40
+point 120, 110
 */
 func main() {
 	
@@ -35,15 +45,15 @@ func main() {
 	// defer canvas.Close()
 	// canvasInfo, _ := png.Decode(canvas)
 
-	cropCopy, _ := os.Open("./normalplay.png")
+	cropCopy, _ := os.Open("./obtainedstar.png")
 	//630, 470
 	defer cropCopy.Close()
 	cropInfo, _ := png.Decode(cropCopy)
-	imgWidth := 30
-	imgHeight := 50
+	imgWidth := 100
+	imgHeight := 40
 
 	m := image.NewRGBA(image.Rect(0, 0, imgWidth, imgHeight))
-	draw.Draw(m, image.Rect(0, 0, imgWidth, imgHeight), cropInfo, image.Point{390,20}, draw.Src)
+	draw.Draw(m, image.Rect(0, 0, imgWidth, imgHeight), cropInfo, image.Point{120,110}, draw.Src)
 	newImg, _ := os.Create("copied.png")
 	defer newImg.Close()
 
