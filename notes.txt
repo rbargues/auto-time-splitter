@@ -3,3 +3,4 @@ might set a timer based on star count and if it changes w/o animation
 we can assume it is currently a 100 coin star
 
 geeqie for linux image viewing allows for no anti-aliasing
+xdotool
